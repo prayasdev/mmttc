@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEP 2020 Orientation & Sensitization | MMTTC-BPUT</title>
+  <style>
+    :root{
+      --ink:#0f172a;
+      --muted:#475569;
+      --line:#e2e8f0;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --accent:#0b5cab;
+      --accent2:#0f766e;
+      --badge:#eff6ff;
+      --shadow: 0 10px 30px rgba(2,6,23,.08);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--ink);
+      background: linear-gradient(180deg, var(--bg), #ffffff 45%);
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    
+    /* Print button */
+    .printBtn{
+      position:fixed;
+      top:20px;
+      right:20px;
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      box-shadow:0 4px 12px rgba(11,92,171,.25);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:all .2s ease;
+      z-index:100;
+    }
+    .printBtn:hover{
+      background:#094a96;
+      box-shadow:0 6px 16px rgba(11,92,171,.35);
+      transform:translateY(-2px);
+    }
+    .printBtn:active{
+      transform:translateY(0);
+    }
+    .printBtn svg{
+      width:24px;
+      height:24px;
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 28px auto;
+      padding: 0 18px 34px;
+    }
+
+    /* Top bar */
+    .top{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .brandRow{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .logos{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .logo{
+      width: 88px;
+      height: 56px;
+      border:1px solid #cbd5e1;
+      border-radius: 10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fbfdff;
+      overflow:hidden;
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      padding:4px;
+    }
+    .org{
+      text-align:right;
+      min-width: 260px;
+    }
+    .org .small{color:var(--muted); font-size:13px; line-height:1.4}
+    .org .site{font-weight:600; font-size:13px; margin-top:4px}
+
+    /* Hero */
+    .hero{
+      padding: 20px 18px 18px;
+      display:grid;
+      gap: 16px;
+      grid-template-columns: 1.3fr .7fr;
+    }
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr}
+      .org{text-align:left}
+    }
+    .title{
+      margin:0;
+      line-height:1.15;
+      font-size: clamp(22px, 3vw, 34px);
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height:1.5;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: var(--badge);
+      border: 1px solid #dbeafe;
+      color:#1e3a8a;
+      font-weight: 650;
+      font-size: 13px;
+      margin-top: 10px;
+      width: fit-content;
+    }
+    .pillGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      align-content:start;
+    }
+    .pill{
+      border:1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 12px;
+      background: #fff;
+    }
+    .pill .k{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.3px; font-weight:600}
+    .pill .v{font-size:15px; font-weight:700; margin-top:3px}
+
+    /* Sections */
+    .grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 880px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px 16px;
+    }
+    .card h2{
+      font-size: 15px;
+      margin: 0 0 10px;
+      letter-spacing:.2px;
+      text-transform:uppercase;
+      font-weight:800;
+      color:var(--accent);
+    }
+    ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+    }
+    li{margin: 6px 0; line-height:1.5}
+    .muted{color:var(--muted)}
+    .badges{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .badge{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12.5px;
+      color: var(--ink);
+    }
+    .badge strong{color: var(--accent2)}
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .btn{
+      cursor:pointer;
+      border:1px solid transparent;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 700;
+      font-size: 13px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration:none;
+      display:inline-block;
+      transition:all .2s ease;
+    }
+    .btn:hover{
+      background:#094a96;
+      transform:translateY(-1px);
+      box-shadow:0 4px 8px rgba(11,92,171,.2);
+      text-decoration:none;
+    }
+    .btn.secondary{
+      background:#fff;
+      color: var(--accent);
+      border-color: #bfdbfe;
+    }
+    .btn.secondary:hover{
+      background:#f0f9ff;
+    }
+    .btn:active{transform: translateY(1px)}
+    .links code{
+      display:block;
+      padding:10px 10px;
+      background:#0b1220;
+      color:#e2e8f0;
+      border-radius: 12px;
+      overflow:auto;
+      font-size: 12.5px;
+      line-height:1.5;
+      word-break:break-all;
+    }
+
+    /* Footer */
+    .footer{
+      margin-top: 14px;
+      padding: 14px 16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px 18px;
+      justify-content:space-between;
+      align-items:flex-start;
+    }
+    .footer .box{
+      flex: 1 1 320px;
+      min-width: 280px;
+    }
+    .footer .line{
+      height:1px; background: var(--line); width:100%; margin: 10px 0;
+    }
+
+    /* Print styles */
+    @media print{
+      body{
+        background:#fff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      @page {
+        size: A4;
+        margin: 15mm;
+      }
+      .wrap{
+        margin:0; 
+        padding:0;
+        max-width:100%;
+      }
+      .top,.card{
+        box-shadow:none;
+        page-break-inside:avoid;
+      }
+      .printBtn{display:none !important}
+      .btn{display:none !important}
+      a{
+        color:var(--accent);
+        text-decoration:underline;
+      }
+      .logo{border:1px solid #cbd5e1}
+      .card h2{color:#000}
+      .hero{page-break-inside:avoid}
+      .grid{page-break-inside:avoid}
+      .footer{page-break-inside:avoid}
+    }
+    
+    @media screen and (max-width: 640px){
+      .printBtn{
+        width:48px;
+        height:48px;
+        top:16px;
+        right:16px;
+      }
+      .printBtn svg{
+        width:20px;
+        height:20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="printBtn" onclick="window.print()" aria-label="Print this page" title="Print (Ctrl+P)">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+    </svg>
+  </button>
+
+  <main class="wrap">
+    <section class="top" role="region" aria-label="Flyer">
+      <div class="brandRow">
+        <div class="logos" aria-label="Logos">
+          <div class="logo" title="UGC Logo">
+            <img src="ugc.png" alt="UGC Logo" />
+          </div>
+          <div class="logo" title="Ashoka Emblem">
+            <img src="ashoka.png" alt="Ashoka Emblem" />
+          </div>
+          <div class="logo" title="BPUT Logo">
+            <img src="bput.png" alt="BPUT Logo" />
+          </div>
+        </div>
+        <div class="org">
+          <div class="small">Organized by</div>
+          <div style="font-weight:800; font-size:14px;">Malaviya Mission Teacher Training Centre (MMTTC)</div>
+          <div class="small">Biju Patnaik University of Technology (BPUT), Odisha, Rourkela – 769015</div>
+          <div class="site">www.bput.ac.in</div>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div>
+          <div class="tag">EIGHT DAYS • ONLINE WORKSHOP</div>
+          <h1 class="title">NEP 2020 Orientation &amp; Sensitization</h1>
+          <p class="subtitle">Faculty Development aligned with NEP 2020 themes (online mode).</p>
+
+          <div class="badges" aria-label="Highlights">
+            <div class="badge"><strong>Fee:</strong> Nil (Free)</div>
+            <div class="badge"><strong>Certificate:</strong> Online (80%+ attendance)</div>
+            <div class="badge"><strong>FDP:</strong> Equivalent to 1 week (CAS/regularization)</div>
+          </div>
+        </div>
+
+        <div class="pillGrid" aria-label="Schedule">
+          <div class="pill">
+            <div class="k">Dates</div>
+            <div class="v">15–23 January 2026</div>
+          </div>
+          <div class="pill">
+            <div class="k">Time</div>
+            <div class="v">2:00 PM – 5:30 PM (IST)</div>
+          </div>
+          <div class="pill">
+            <div class="k">Mode</div>
+            <div class="v">Online</div>
+          </div>
+          <div class="pill">
+            <div class="k">Register by</div>
+            <div class="v">08 January 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Details">
+      <article class="card">
+        <h2>Programme Themes</h2>
+        <ul>
+          <li>Holistic and multidisciplinary education</li>
+          <li>Indian knowledge systems and multilingualism</li>
+          <li>Academic leadership, governance and management</li>
+          <li>Higher education and society</li>
+          <li>Research and development</li>
+          <li>Skill development</li>
+          <li>Student diversity and inclusive education</li>
+          <li>Information and communication technology</li>
+          <li>Autonomy to institution and choice to students</li>
+          <li>Curriculum development, pedagogy and assessment</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Eligibility</h2>
+        <ul>
+          <li>Faculty of Central/State/Deemed/Private universities, colleges and other HEIs</li>
+          <li>Faculty from professional council–regulated HEIs (AICTE, PCI, ICAR, etc.)</li>
+          <li>Contractual / ad-hoc / guest faculty</li>
+          <li>Ph.D. research scholars in HEIs</li>
+        </ul>
+        <p class="muted" style="margin:10px 0 0;">
+          Attendance is compulsory for all sessions.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>How to Register</h2>
+        <div class="cta">
+          <a class="btn" href="https://mmc.ugc.ac.in/Login/Index" target="_blank" rel="noreferrer">UGC Portal Registration</a>
+          <a class="btn secondary" href="https://forms.gle/3oDRsB1nAF3k3YVJ9" target="_blank" rel="noreferrer">Google Form Registration</a>
+          <button class="btn secondary" type="button" onclick="copyLinks()">Copy Links</button>
+        </div>
+
+        <div class="links" style="margin-top:12px;">
+          <code id="linksText">UGC Portal: https://mmc.ugc.ac.in/Login/Index
+Google Form: https://forms.gle/3oDRsB1nAF3k3YVJ9</code>
+          <p class="muted" id="copyStatus" style="margin:8px 0 0; font-size:12px;"></p>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Contact</h2>
+        <p style="margin:0;"><strong>Dr. Ashwini Kumar Sahoo</strong></p>
+        <p style="margin:6px 0 0;">Programme Director, MMTTC-BPUT</p>
+        <p style="margin:6px 0 0;">Email: <a href="mailto:mmttc@bput.ac.in">mmttc@bput.ac.in</a></p>
+        <p style="margin:6px 0 0;">Mobile: <a href="tel:+919444786904">9444786904</a></p>
+
+        <div class="line"></div>
+        <p class="muted" style="margin:0;">
+          Venue: Online • BPUT, Odisha, Rourkela – 769015
+        </p>
+      </article>
+    </section>
+
+    <section class="card footer" aria-label="Notes">
+      <div class="box">
+        <h2 style="margin:0 0 8px;">Participation Guidelines</h2>
+        <ul>
+          <li>No registration/participation fee.</li>
+          <li>Online certificate for 80%+ attendance and qualifying assessment parameters.</li>
+          <li>Considered equivalent to one-week FDP for regularization/CAS.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function copyLinks(){
+      const text = document.getElementById('linksText').innerText;
+      const status = document.getElementById('copyStatus');
+      navigator.clipboard.writeText(text).then(() => {
+        status.textContent = "✓ Links copied to clipboard.";
+        setTimeout(() => { status.textContent = ""; }, 3000);
+      }).catch(() => {
+        status.textContent = "Copy failed. Please select and copy manually.";
+      });
+    }
+  </script>
+</body>
+    </html>
